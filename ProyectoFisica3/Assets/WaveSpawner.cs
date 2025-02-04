@@ -7,7 +7,10 @@ public class WaveSpawner : MonoBehaviour
     public float spawnInterval = 1f;  // Tiempo entre ondas
     public float sourceFrequency = 1f;
     public float waveSpeed = 5f;
-    public float maxRadius = 2f; // Controlar desde el Spawner
+    public float maxRadius = 2f;// Controlar desde el Spawner
+    public float moveSpeed = 5f;
+    public AmbulanceScript ambulance; // Referencia al script de la ambulancia
+
 
     private float timer = 0f;
     public Rigidbody2D rb;
@@ -17,7 +20,6 @@ public class WaveSpawner : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -29,12 +31,12 @@ public class WaveSpawner : MonoBehaviour
         }
 
         // Movimiento de la fuente (ejemplo con WASD)
-        float moveSpeed = 3f;
-        Vector2 movement = new Vector2(
-            Input.GetAxis("Horizontal"),
-            Input.GetAxis("Vertical")
-        ) * moveSpeed;
-        rb.linearVelocity = movement;
+        
+        // Sincronizar la velocidad con la ambulancia
+        if (ambulance != null)
+        {
+            rb.linearVelocity = ambulance.rb.linearVelocity;
+        }
     }
 
     void SpawnWave()

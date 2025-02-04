@@ -238,10 +238,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wavePrefab: {fileID: 493076149870092712, guid: 9a3c97d73d723a6478bab5a201cc575b, type: 3}
-  spawnInterval: 0.5
-  sourceFrequency: 5
-  waveSpeed: 1
-  maxRadius: 5
+  spawnInterval: 0.3
+  sourceFrequency: 10
+  waveSpeed: 5
+  maxRadius: 7
+  moveSpeed: 5
+  ambulance: {fileID: 1580610652}
   rb: {fileID: 351167156}
 --- !u!4 &351167154
 Transform:
