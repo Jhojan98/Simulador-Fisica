@@ -1,0 +1,32 @@
+# Archivos generados por Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# Archivos de configuración de Visual Studio y JetBrains Rider
+.vs/
+.idea/
+*.suo
+*.user
+*.userprefs
+*.csproj
+*.pidb
+*.sln
+*.unityproj
+*.cache
+*.booproj
+*.svd
+
+# Archivos de control de versiones específicos de Unity
+/Assets/Plugins/Editor/*.meta
+
+# Archivos de configuración de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración de paquetes de Unity
+/Packages/com.unity.*.test/
