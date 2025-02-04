@@ -23,6 +23,7 @@
 
 # Archivos de control de versiones específicos de Unity
 /Assets/Plugins/Editor/*.meta
+/Assets*.meta
 
 # Archivos de configuración de sistema operativo
 .DS_Store
