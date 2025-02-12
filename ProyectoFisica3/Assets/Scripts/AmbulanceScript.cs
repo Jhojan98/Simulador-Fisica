@@ -1,12 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using Unity.VisualScripting;
 public class AmbulanceScript : MonoBehaviour
 {
-    public float moveSpeed = 20f; // Velocidad ajustable
+    public float moveSpeed = 0f; // Velocidad ajustable
     public Rigidbody2D rb;
     // Evento para notificar cambios de velocidad
     public delegate void SpeedChangedHandler(Vector2 newVelocity);
     public event SpeedChangedHandler OnSpeedChanged;
+    public float sourceFrequency = 1f;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,16 +21,17 @@ public class AmbulanceScript : MonoBehaviour
     }
 
     // Update is called once per frame
+    public void ResetPositionAndVelocity(Vector2 newPosition)
+    {
+        transform.position = newPosition;
+        rb.linearVelocity = newPosition;
+        rb.angularVelocity = 0f;
+        OnSpeedChanged?.Invoke(Vector2.zero);
+    }
     void Update()
     {
         // transform.position = transform.position + (Vector3.right * moveSpeed) * Time.deltaTime;
         rb.linearVelocity = Vector3.right * moveSpeed; // Mueve usando velocidad física
-        /* float moveSpeed = 5f;
-        Vector2 movement = new Vector2(
-            Input.GetAxis("Horizontal"),
-            Input.GetAxis("Vertical")
-        ) * moveSpeed;
-        rb.linearVelocity = movement;*/
         // Evento para notificar cambios de velocidad
         Vector2 newVelocity = Vector2.right * moveSpeed;
         if (rb.linearVelocity != newVelocity)
