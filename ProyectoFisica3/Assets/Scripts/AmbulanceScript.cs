@@ -10,6 +10,7 @@ public class AmbulanceScript : MonoBehaviour
     public delegate void SpeedChangedHandler(Vector2 newVelocity);
     public event SpeedChangedHandler OnSpeedChanged;
     public float sourceFrequency = 1f;
+    public float simulationSpeedFactor = 0.1f;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,7 +32,7 @@ public class AmbulanceScript : MonoBehaviour
     void Update()
     {
         // transform.position = transform.position + (Vector3.right * moveSpeed) * Time.deltaTime;
-        rb.linearVelocity = Vector3.right * moveSpeed; // Mueve usando velocidad física
+        rb.linearVelocity = Vector3.right * moveSpeed*simulationSpeedFactor; // Mueve usando velocidad física
         // Evento para notificar cambios de velocidad
         Vector2 newVelocity = Vector2.right * moveSpeed;
         if (rb.linearVelocity != newVelocity)
